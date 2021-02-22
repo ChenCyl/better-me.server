@@ -42,6 +42,6 @@ const validate = (user) => {
   return schema.validate(user)
 }
 
-// exports.userSchema = userSchema
+exports.userSchema = userSchema
 exports.validate = validate
 exports.User = User

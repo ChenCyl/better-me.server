@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   const match = await bcrypt.compare(req.body.password, user.password)
   if (!match) return res.status(400).send('Invalid name or password.')
 
-  res.send(user.genJwt())
+  res.header('x-token', user.genJwt()).send()
 })
 
 const validate = (user) => {
@@ -29,8 +29,3 @@ const validate = (user) => {
 }
 
 module.exports = router
-
-// todo: 
-// 1. put jwt to header
-// 2. auth middleware
-// 3. commit model

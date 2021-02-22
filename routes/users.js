@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 
   try {
     await user.save()
-    res.send(user.genJwt())
+    res.header('x-token', user.genJwt()).send()
   } catch (error) {
     res.send(error)
   }
