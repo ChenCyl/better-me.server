@@ -6,27 +6,24 @@ const habitSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   type: {
     type: String,
     enum: ['count', 'duration'],
     trim: true,
-    default: 'count'
+    default: 'count',
+    immutable: true
   },
   recordable: {
     type: Boolean,
-    default: false
-  },
-  createdTime: {
-    type: Date,
-    default: new Date()
-  },
-  user: {
-    account: {
-      type: String,
-      required: true
-    }
+    default: false,
+    immutable: true
   }
-})
+}, { timestamps: true })
 
 const Habit = mongoose.model('Habit', habitSchema)
 
