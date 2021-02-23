@@ -16,6 +16,9 @@ router.post('/', auth, async (req, res) => {
 
   const commit = new Commit({
     habit,
+    user: {
+      account: req.user.account
+    },
     count: req.body.count,
     durationMinutes: req.body.durationMinutes,
     description: req.body.description,

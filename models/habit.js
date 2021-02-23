@@ -1,8 +1,6 @@
 const Joi = require('joi')
 const mongoose = require('mongoose')
 
-const { userSchema } = require('./user')
-
 const habitSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -23,11 +21,10 @@ const habitSchema = new mongoose.Schema({
     default: new Date()
   },
   user: {
-    type: new mongoose.Schema({
-      // todo: add user to commit and habit
-      _id: mongoose.Types.ObjectId
-    }),
-    required: true
+    account: {
+      type: String,
+      required: true
+    }
   }
 })
 

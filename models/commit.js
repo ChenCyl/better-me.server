@@ -5,9 +5,24 @@ const mongoose = require('mongoose')
 const { habitSchema } = require('./habit')
 
 const commitSchema = new mongoose.Schema({
-  habit: {
-    type: habitSchema,
-    required: true
+  habit: new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ['count', 'duration'],
+      trim: true,
+      default: 'count'
+    }
+  }),
+  // todo: best practice?
+  user: {
+    account: {
+      type: String,
+      required: true
+    }
   },
   count: {
     type: Number,

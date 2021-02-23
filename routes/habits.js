@@ -16,8 +16,7 @@ router.post('/', auth, async (req, res) => {
     recordable: req.body.recordable,
     createdTime: new Date(),
     user: {
-      account: req.user.account,
-      isVip: req.user.isVip
+      account: req.user.account
     }
   })
 

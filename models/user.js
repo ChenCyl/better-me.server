@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.genJwt = function() {
   return jwt.sign({
+    _id: this._id,
     account: this.account,
     isVip: this.isVip
   // todo: privateKey
